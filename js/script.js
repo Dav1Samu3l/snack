@@ -1,7 +1,7 @@
 const convas = document.querySelector("canvas");
 const ctx = convas.getContext("2d");
 
-
+const audio = new Audio('../assets/assets_audio.mp3');
 
 
 const size = 30;
@@ -100,20 +100,21 @@ const drowGrid = () => {
 const chackEat = () => {
     const head = snake[snake.length - 1];
     if (head.x == food.x && head.y == food.y) {
+        audio.play();
         snake.push(head);
-        let  y= randlePosition();
-        let x= randlePosition();
+        let y = randlePosition();
+        let x = randlePosition();
         food.color = randleColor();
-        while (snake.find((position)=> position.x && position.y == y)) {
-             y = randlePosition();
-             x = randlePosition();
+        while (snake.find((position) => position.x && position.y == y)) {
+            y = randlePosition();
+            x = randlePosition();
         }
-        food. x = x
-        food. y  = y
+        food.x = x
+        food.y = y
         food.color = randleColor();
 
 
-        
+
     }
 }
 const gameLoop = () => {
@@ -127,7 +128,7 @@ const gameLoop = () => {
     chackEat();
     loopId = setTimeout(() => {
         gameLoop()
-    }, 100);
+    }, 250);
 
 
 
